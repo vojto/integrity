@@ -76,9 +76,11 @@ class CampfireNotificationTest < Test::Unit::AcceptanceTestCase
     }.to_json
 
     build_commit = @repo.commits.last
+    
+    commit_date = build_commit["timestamp"]
     paste_body = <<-EOM
 Commit Message: #{build_commit["message"]}
-Commit Date: #{DateTime.parse(build_commit["timestamp"])}
+Commit Date: #{commit_date.strftime("%FT%T%z")}
 Commit Author: #{build_commit["author"]["name"]}
 
 Running tests...

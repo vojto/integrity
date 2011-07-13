@@ -24,7 +24,7 @@ module Integrity
       result = run_in_dir!("git show -s --pretty=format:\"#{format}\" #{sha1}")
       dump   = YAML.load(result.output)
 
-      dump.update("committed_at" => Time.parse(dump["committed_at"]))
+      dump.update("committed_at" => dump["committed_at"])
     end
 
     def sha1

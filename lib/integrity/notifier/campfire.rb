@@ -23,7 +23,7 @@ module Integrity
       def full_message
         <<-EOM
 Commit Message: #{build.commit.message}
-Commit Date: #{build.commit.committed_at}
+Commit Date: #{build.commit.committed_at.strftime("%FT%T%z")}
 Commit Author: #{build.commit.author.name}
 
 #{build_output}
